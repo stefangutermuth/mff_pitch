@@ -1671,8 +1671,39 @@ body:has(section.present.slide--dark) .reveal .controls button.enabled:hover { c
   border-top: 2px solid var(--navy) !important;
 }
 
-/* Route zentriert (CTA-Folie) */
-.route--center { margin-inline: auto; margin-top: 1.3rem; margin-bottom: 0.4rem; width: min(420px, 80%); }
+/* Kontakt-Folie (analog wuw_pitch) */
+.contact-block {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  max-width: none;
+}
+.contact-block strong { color: var(--navy); }
+.reveal .contact-mail {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid var(--orange);
+}
+.reveal .contact-mail:hover { color: var(--orange-deep); }
+.partner-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.partner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35em 0.9em;
+}
+.partner-badge .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+.contact-fine { margin-top: 1.8rem; max-width: 70ch; }
 
 /* Echter Site-Screenshot im Browser-Rahmen (Kapitel 3.1) */
 .site-shot {

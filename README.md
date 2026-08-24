@@ -79,7 +79,7 @@ mff_pitch/
 4. **SEO-Betreuung** — „Diese Suchen holen wir uns": echte Keywords je Säule + was wir bauen · Reporting & AI-Sichtbarkeit (2 Folien)
 5. **Zeitplan** — Sep Fundament/Förderantrag · Okt–Nov Umbau · Livegang in Etappen (Leistungsseiten zuerst), Dez komplett · ab Jan Content-Engine
 6. **Investition** — Pakete & Preise · Förder-Rechnung (2 Folien)
-7. **Nächster Schritt** — Termin in Chemnitz (Mailto-CTA)
+7. **Kontakt** — ruhige Schluss-Folie analog wuw_pitch: Adresse, Ansprechpartner, Partner-Badges — alles läuft online
 
 ## Preise & Förderung (im Deck ausgewiesen)
 
