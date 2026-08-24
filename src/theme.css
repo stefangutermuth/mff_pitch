@@ -1783,6 +1783,15 @@ body:has(section.present.slide--dark) .reveal .controls button.enabled:hover { c
   position: relative;
   white-space: nowrap;
 }
+/* Suchvolumen-Badge im Chip */
+.query-chip em {
+  font-style: normal;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.68rem;
+  color: var(--navy);
+  margin-left: 0.4em;
+}
 .query-chip::before {
   content: '';
   position: absolute;
