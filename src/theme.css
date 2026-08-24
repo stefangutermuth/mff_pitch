@@ -1254,6 +1254,412 @@ body:has(section.present.slide--dark) .reveal .controls button.enabled:hover { c
   .position-bar .pc-sub { display: none; }
 }
 
+/* ============================================================
+   ANGEBOTS-KOMPONENTEN (Ausgangslage, Bausteine, Zeitplan, Preise)
+   ============================================================ */
+
+/* 4 Kennzahlen-Karten (Kapitel 2.1) */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+.kpi-grid .stat-card { padding: 1.05rem 1.15rem 0.95rem; }
+.kpi-grid .stat-card__label { font-size: 0.78rem; line-height: 1.45; }
+
+/* Konzept-Karten A/B (Kapitel 2.2) */
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+.concept-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.3rem 1.5rem 1.25rem;
+}
+.concept-card__icon {
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  background: var(--navy);
+  color: var(--orange);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+}
+.concept-card h3 { margin-bottom: 0.4rem; font-size: 1.15rem; }
+.concept-card p { font-size: 0.92rem; line-height: 1.55; max-width: none; }
+
+/* Hinweis-Box */
+.note-box {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--orange);
+  border-radius: 12px;
+  padding: 0.9rem 1.2rem;
+  margin-top: 1.2rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  max-width: 72ch;
+}
+.note-box strong { color: var(--navy); }
+
+/* Check-Listen (Leistungsumfang) */
+.reveal .check-list {
+  list-style: none;
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 0.3rem;
+}
+.reveal .check-list--tight { gap: 0.6rem; margin-top: 0.9rem; }
+.reveal .check-list li {
+  position: relative;
+  padding-left: 1.7rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.reveal .check-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ok);
+  font-weight: 700;
+}
+
+/* Sitemap-Diagramm: Pillar-Cluster (Kapitel 3.1) */
+.sitemap { display: grid; justify-items: center; gap: 0; }
+.sitemap__root {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  background: var(--navy);
+  border-radius: 10px;
+  padding: 0.45rem 1.1rem;
+}
+.sitemap__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+  width: 100%;
+  margin-top: 1.5rem;
+  position: relative;
+}
+.sitemap__pillars::before {
+  content: '';
+  position: absolute;
+  top: -0.95rem;
+  left: 16.6%;
+  right: 16.6%;
+  height: 2px;
+  background: var(--line);
+}
+.sitemap__pillar {
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+  position: relative;
+  padding-top: 0.55rem;
+}
+.sitemap__pillar::before {
+  content: '';
+  position: absolute;
+  top: -0.95rem;
+  height: 0.95rem;
+  width: 2px;
+  background: var(--line);
+}
+.sitemap__p {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-align: center;
+  color: var(--navy);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 0.4rem 0.55rem;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 3.1rem;
+  display: grid;
+  place-items: center;
+}
+.sitemap__c {
+  width: 78%;
+  height: 14px;
+  border-radius: 999px;
+  background: #e7edf5;
+  border: 1px solid #dee7f0;
+}
+.sitemap figcaption { margin-top: 0.9rem; }
+
+/* Artikel-Mock mit Termin-CTA (Kapitel 3.2) */
+.article-mock {
+  max-width: 330px;
+  justify-self: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.article-mock__browser {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 0.45rem 0.8rem;
+}
+.article-mock__dots { display: inline-flex; gap: 4px; }
+.article-mock__dots i { width: 7px; height: 7px; border-radius: 50%; background: #cfd9e4; }
+.article-mock__url {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.64rem;
+  color: var(--muted);
+}
+.article-mock__page { display: grid; gap: 0.5rem; padding: 1rem 1.1rem 1.1rem; justify-items: start; }
+.article-mock__line { height: 8px; border-radius: 5px; background: #e4ebf3; width: 100%; }
+.article-mock__line--h { height: 13px; width: 70%; background: #c9d6e4; }
+.article-mock__line--short { width: 45%; }
+.article-mock__cta {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.74rem;
+  color: var(--night);
+  background: var(--orange);
+  border-radius: 999px;
+  padding: 0.4em 1.1em;
+  margin: 0.25rem 0;
+}
+
+/* 3-Schritte-Flow (Kapitel 4.1) */
+.flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 0.9rem;
+  align-items: stretch;
+  margin-top: 0.6rem;
+}
+.flow__card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.1rem 1.25rem 1.15rem;
+}
+.flow__no {
+  display: grid;
+  place-items: center;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--orange);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+.flow__card h3 { margin-bottom: 0.35rem; font-size: 1.05rem; }
+.flow__card p { font-size: 0.86rem; line-height: 1.5; max-width: none; }
+.flow__arrow {
+  align-self: center;
+  color: var(--orange-deep);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+/* Zeitplan (Kapitel 5) — 6 Monatsspalten */
+.timeline { margin-top: 0.7rem; display: grid; gap: 0.55rem; }
+.timeline__months {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin-left: 232px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.2rem;
+}
+.timeline__row {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+.timeline__label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--navy);
+  text-align: right;
+}
+.timeline__track {
+  position: relative;
+  height: 44px;
+  border-radius: 10px;
+  background:
+    repeating-linear-gradient(to right,
+      transparent 0, transparent calc(100% / 6 - 1px),
+      var(--line) calc(100% / 6 - 1px), var(--line) calc(100% / 6));
+}
+.timeline__bar {
+  position: absolute;
+  top: 5px; bottom: 5px;
+  left: calc(var(--from) / 6 * 100%);
+  width: calc(var(--span) / 6 * 100% - 6px);
+  margin-left: 3px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.85rem;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #eaf2fa;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: visible;
+}
+.timeline__bar--accent { background: var(--orange); color: var(--night); }
+.timeline__bar--open::after {
+  content: '→';
+  margin-left: 0.5em;
+  color: var(--orange-bright);
+}
+
+/* Preis-Karten (Kapitel 6.1) */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+  align-items: stretch;
+}
+.price-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.2rem 1.4rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+}
+.price-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+.price-card__icon {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  background: var(--navy);
+  color: var(--orange);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.price-card__head h3 { margin: 0; font-size: 1.12rem; flex: 1 1 auto; }
+.price-card__price {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.9rem;
+  color: var(--navy);
+  margin-bottom: 0.7rem;
+  max-width: none;
+  font-variant-numeric: tabular-nums;
+}
+.price-card__price em {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.46em;
+  color: var(--muted);
+}
+.reveal .price-card__list {
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+.reveal .price-card__list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+.reveal .price-card__list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--ok);
+  font-weight: 700;
+}
+.price-card__note {
+  margin-top: auto;
+  padding-top: 0.8rem;
+  font-size: 0.76rem;
+  color: var(--muted);
+  max-width: none;
+}
+
+/* Förder-Rechnung (Kapitel 6.2) */
+.reveal .calc {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.5rem 1.5rem;
+  font-variant-numeric: tabular-nums;
+  margin-top: 0.3rem;
+}
+.calc__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.62rem 0;
+}
+.calc__row + .calc__row { border-top: 1px solid var(--line); }
+.calc__row dt { font-size: 0.95rem; color: var(--ink); }
+.calc__row dd {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+.calc__row--sum { background: var(--paper); margin-inline: -1.5rem; padding-inline: 1.5rem; }
+.calc__row--sum dt { font-weight: 600; }
+.calc__row--minus dd { color: var(--ok); }
+.calc__row--result dt {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--navy);
+}
+.calc__row--result dd {
+  font-size: 1.5rem;
+  color: var(--navy);
+}
+.calc__row--result {
+  border-top: 2px solid var(--navy) !important;
+}
+
+/* Route zentriert (CTA-Folie) */
+.route--center { margin-inline: auto; margin-top: 1.3rem; margin-bottom: 0.4rem; width: min(420px, 80%); }
+
 /* ---------- Reduced Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .reveal .slides section,
