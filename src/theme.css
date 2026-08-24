@@ -67,6 +67,10 @@
 ::selection { background: var(--orange); color: var(--night); }
 
 /* ---------- Reveal-Basis ---------- */
+/* Der Root-Font ist der globale Maßstab: alle rem-Größen skalieren mit.
+   20px füllt die 1280×800-Folienfläche ähnlich satt wie das wuw-Deck. */
+html { font-size: 20px; }
+
 html, body {
   font-family: var(--font-sans);
   color: var(--ink);
@@ -78,7 +82,7 @@ html, body {
 
 .reveal {
   font-family: var(--font-sans);
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 400;
   color: var(--ink);
   letter-spacing: -0.005em;
@@ -248,7 +252,7 @@ html, body {
 
 .title-visual { position: relative; justify-self: center; padding-bottom: 34px; }
 .ig-tile {
-  width: 226px;
+  width: 254px;
   aspect-ratio: 9 / 15;
   display: flex;
   flex-direction: column;
@@ -1404,7 +1408,7 @@ body:has(section.present.slide--dark) .reveal .controls button.enabled:hover { c
 
 /* Artikel-Mock mit Termin-CTA (Kapitel 3.2) */
 .article-mock {
-  max-width: 330px;
+  max-width: 370px;
   justify-self: center;
   background: #fff;
   border: 1px solid var(--line);
@@ -1483,7 +1487,7 @@ body:has(section.present.slide--dark) .reveal .controls button.enabled:hover { c
 .timeline__months {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  margin-left: 232px;
+  margin-left: 258px;
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -1493,7 +1497,7 @@ body:has(section.present.slide--dark) .reveal .controls button.enabled:hover { c
 }
 .timeline__row {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
+  grid-template-columns: 246px minmax(0, 1fr);
   gap: 12px;
   align-items: center;
 }
@@ -1506,7 +1510,7 @@ body:has(section.present.slide--dark) .reveal .controls button.enabled:hover { c
 }
 .timeline__track {
   position: relative;
-  height: 44px;
+  height: 50px;
   border-radius: 10px;
   background:
     repeating-linear-gradient(to right,

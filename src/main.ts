@@ -34,7 +34,8 @@ const deck = new Reveal({
   controlsTutorial: false,
   controlsLayout: 'edges',
   controlsBackArrows: 'visible',
-  center: false,
+  // Inhalte pro Folie vertikal mittig — Folien wirken gefüllt statt kopflastig.
+  center: true,
   // Linear: Rechts/Links blättern durch ALLE Folien & Unterfolien (inkl. Fragmente)
   navigationMode: 'linear',
   transition: prefersReducedMotion ? 'none' : 'slide',
