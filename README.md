@@ -94,9 +94,9 @@ mff_pitch/
 
 Zwei Register: **laute** dunkle Navy-Folien (Instagram-Welt — 9:16-Kachel,
 große Montserrat-Zahlen, Orange) rahmen **leise** helle Angebots-Folien
-(Such-Welt — Karten, Diagramme, viel Ruhe). Die Detail-Recherche
-(SERP-Duell, rente-mit-70-Beweis) lebt kompakt in Kapitel 2 und den
-Speaker-Notes weiter.
+(Such-Welt — Karten, Diagramme, viel Ruhe). Fach-Metriken wie Domain
+Authority sind bewusst komplett draußen — nur Zahlen, die ohne Erklärung
+funktionieren; der Rest steht als Sprechtext in den Speaker-Notes.
 
 **Palette** (zitiert aus dem MFF-Logo): Navy `#063560` · Night `#04223c` ·
 Orange `#f8a000` · Papier `#f5f8fb` · Tinte `#16334f` · Linie `#d9e2ec`
