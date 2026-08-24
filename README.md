@@ -76,8 +76,8 @@ mff_pitch/
 1. **Der Widerspruch** — 134.000 folgen dir · 63 finden dich (Titel)
 2. **Ausgangslage & Konzept** — vier Zahlen · zwei Bausteine, ohne Werbebudget (2 Folien)
 3. **Soft Relaunch** — Umbau statt Neubau auf Pillar-Cluster-Struktur · Conversion zum Beratungstermin (2 Folien)
-4. **SEO-Betreuung** — Content-Engine (Du redest, wir bauen) · Reporting & AI-Sichtbarkeit (2 Folien)
-5. **Zeitplan** — Sep Fundament/Förderantrag · Okt–Nov Bau · Dez Launch · ab Jan Content-Engine
+4. **SEO-Betreuung** — „Diese Suchen holen wir uns": echte Keywords je Säule + was wir bauen · Reporting & AI-Sichtbarkeit (2 Folien)
+5. **Zeitplan** — Sep Fundament/Förderantrag · Okt–Nov Umbau · Livegang in Etappen (Leistungsseiten zuerst), Dez komplett · ab Jan Content-Engine
 6. **Investition** — Pakete & Preise · Förder-Rechnung (2 Folien)
 7. **Nächster Schritt** — Termin in Chemnitz (Mailto-CTA)
 

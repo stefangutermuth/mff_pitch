@@ -222,12 +222,22 @@ html, body {
 }
 .logo-gumu { width: 96px; filter: brightness(0) invert(1); opacity: 0.95; }
 .logo-x { color: var(--orange); font-size: 1rem; }
-.wordmark {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: #fff;
-  letter-spacing: 0.01em;
+/* Original-Logo (Navy/Orange) auf weißem Chip — bleibt auf Dunkel lesbar */
+.logo-chip {
+  display: inline-grid;
+  place-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 5px 12px;
+}
+/* Reveal-Theme setzt max-height:95% + margin auf section img — neutralisieren */
+.reveal .logo-mff {
+  height: 40px;
+  width: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  display: block;
 }
 .title-h1 {
   display: grid;
@@ -1663,6 +1673,89 @@ body:has(section.present.slide--dark) .reveal .controls button.enabled:hover { c
 
 /* Route zentriert (CTA-Folie) */
 .route--center { margin-inline: auto; margin-top: 1.3rem; margin-bottom: 0.4rem; width: min(420px, 80%); }
+
+/* Echter Site-Screenshot im Browser-Rahmen (Kapitel 3.1) */
+.site-shot {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  max-width: 520px;
+  justify-self: center;
+}
+.reveal .site-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: none;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  background: none;
+}
+.site-shot__note {
+  font-size: 0.74rem;
+  color: var(--muted);
+  padding: 0.55rem 0.9rem 0.65rem;
+  border-top: 1px solid var(--line);
+  max-width: none;
+  margin: 0;
+}
+
+/* Themen-Karten: Suchbegriffe + was wir bauen (Kapitel 4.1) */
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 0.4rem;
+}
+.topic-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.95rem 1.15rem 0.9rem;
+}
+.topic-card__h {
+  margin: 0 0 0.5rem 0 !important;
+  font-size: 0.95rem;
+}
+.topic-card__queries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.6rem;
+}
+.query-chip {
+  font-family: var(--serp-font);
+  font-size: 0.72rem;
+  color: #202124;
+  background: var(--paper);
+  border: 1px solid #dfe1e5;
+  border-radius: 999px;
+  padding: 0.28em 0.75em 0.28em 1.9em;
+  position: relative;
+  white-space: nowrap;
+}
+.query-chip::before {
+  content: '';
+  position: absolute;
+  left: 0.7em;
+  top: 50%;
+  translate: 0 -50%;
+  width: 0.85em;
+  height: 0.85em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='8.5' cy='8.5' r='5.5' fill='none' stroke='%239aa0a6' stroke-width='2.2'/%3E%3Cline x1='12.8' y1='12.8' x2='17.5' y2='17.5' stroke='%239aa0a6' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+.topic-card__do {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  max-width: none;
+  color: var(--ink);
+}
+.topic-card__do strong { color: var(--orange-deep); }
 
 /* ---------- Reduced Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
