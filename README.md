@@ -1,7 +1,7 @@
 # Mr.Finanzfakten — SEO-Pitch (Reveal.js-Deck)
 
 Pitch-Deck: **GUMU Werbeagentur** → **Tim Hunger (Mr.Finanzfakten)**,
-Angebot: **neue Website + laufende SEO-Betreuung** (kein SEA), mit
+Angebot: **Soft Relaunch + laufende SEO-Betreuung** (kein SEA), mit
 Preispaketen, Zeitplan und Förder-Rechnung. Kein Kundenprojekt —
 das Verkaufsinstrument selbst.
 
@@ -53,9 +53,9 @@ vollständig (Auto-Steps sind dort deaktiviert).
 
 ## ⚠️ Vor dem Versand
 
-Preise sind als **realistische Vorschläge** eingetragen (7.000 € / 750 €/Monat
-/ Eigenanteil 5.900 €). Zum Anpassen: Kapitel 6 in `index.html`
-(price-card / calc) — die Förder-Rechnung muss dann mitgezogen werden.
+Preise sind final abgestimmt (2.500 € / 750 €/Monat / Eigenanteil 1.400 €).
+Zum Anpassen: Kapitel 6 in `index.html` (price-card / calc) — die
+Förder-Rechnung muss dann mitgezogen werden.
 
 
 ## Struktur
@@ -75,7 +75,7 @@ mff_pitch/
 
 1. **Der Widerspruch** — 134.000 folgen dir · 63 finden dich (Titel)
 2. **Ausgangslage & Konzept** — vier Zahlen · zwei Bausteine, ohne Werbebudget (2 Folien)
-3. **Neue Website** — Pillar-Cluster-Relaunch · Conversion zum Beratungstermin (2 Folien)
+3. **Soft Relaunch** — Umbau statt Neubau auf Pillar-Cluster-Struktur · Conversion zum Beratungstermin (2 Folien)
 4. **SEO-Betreuung** — Content-Engine (Du redest, wir bauen) · Reporting & AI-Sichtbarkeit (2 Folien)
 5. **Zeitplan** — Sep Fundament/Förderantrag · Okt–Nov Bau · Dez Launch · ab Jan Content-Engine
 6. **Investition** — Pakete & Preise · Förder-Rechnung (2 Folien)
@@ -83,9 +83,9 @@ mff_pitch/
 
 ## Preise & Förderung (im Deck ausgewiesen)
 
-- **Baustein A · Neue Website: 7.000 € einmalig** — exakt auf den Fördertopf geschnitten
-- **Baustein B · SEO-Betreuung: 750 €/Monat** — 2 Ratgeber-Artikel, Reporting gegen 8 Wettbewerber, AI-Tracking; 6 Monate Anlauf, danach monatlich kündbar
-- **Paket Jahr-1-Start: 11.500 €** (Website + 6 Monate SEO) · Förderzuschuss **−5.600 €** (80 % aus 2 × 3.500-€-Topf) → **Eigenanteil 5.900 €**
+- **Baustein A · Soft Relaunch: 2.500 € einmalig** — Umbau der bestehenden Website auf Pillar-Cluster-Struktur, Design bleibt
+- **Baustein B · SEO-Betreuung: 750 €/Monat** — Inhalte nach Keyword-Architektur **ohne Seiten-Limit**, Reporting gegen 8 Wettbewerber, AI-Tracking; **Mindestlaufzeit 6 Monate**, danach monatlich kündbar
+- **Paket: 7.000 €** (Relaunch + 6 Monate SEO) — **trifft den Fördertopf von 2 × 3.500 € exakt** · Zuschuss **−5.600 €** (80 %) → **Eigenanteil 1.400 €**
 - Alle Beträge netto, zzgl. USt. Förderfähigkeit vor Antragstellung prüfen; vorbehaltlich Bewilligung.
 - Kein SEA — bewusst nur Website + organische Sichtbarkeit.
 
