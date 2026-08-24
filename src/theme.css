@@ -207,6 +207,19 @@ html, body {
 /* ============================================================
    TITEL-FOLIE
    ============================================================ */
+/* Cover-Folie (Deckblatt) */
+.cover { max-width: 900px; }
+.cover .title-logos { margin-bottom: 2.6rem; }
+.cover__h1 {
+  font-size: 3.1rem;
+  color: #fff;
+  line-height: 1.08;
+  margin-bottom: 0.45em;
+}
+.cover__amp { color: var(--orange); }
+.cover .subline { font-size: 1.12rem; max-width: 48ch; }
+.cover .title-meta { margin-top: 2.2rem; }
+
 .title-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
