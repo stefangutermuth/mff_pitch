@@ -1,7 +1,8 @@
 // Reveal-Init für das Mr.Finanzfakten-Pitch-Deck.
-// Steuerung identisch zum wuw_pitch: Pfeile linear durch alle Folien &
-// Einblendungen, Hoch/Runter = Kapitelsprung, Kapitel-Rail unten,
-// Position-Card oben links, ?-Hilfe, Speaker-View (S), ?print-pdf.
+// Steuerung wie wuw_pitch: Pfeile Folie für Folie, Hoch/Runter =
+// Kapitelsprung, Kapitel-Rail unten, Position-Card oben links, ?-Hilfe,
+// Speaker-View (S), ?print-pdf. Einblendungen (.step) laufen AUTOMATISCH
+// gestaffelt ab, sobald eine Folie erscheint — kein Durchklicken nötig.
 
 import Reveal from 'reveal.js';
 import Notes from 'reveal.js/plugin/notes/notes.esm.js';
@@ -14,6 +15,7 @@ import './theme.css';
 
 const prefersReducedMotion =
   window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isPrint = window.location.search.includes('print-pdf');
 
 // Springt zum nächsten (dir=1) bzw. vorherigen (dir=-1) Top-Level-Kapitel.
 // Wird an die Hoch/Runter-Tasten gebunden — Kapitelwechsel statt Unterfolien.
@@ -38,7 +40,6 @@ const deck = new Reveal({
   transition: prefersReducedMotion ? 'none' : 'slide',
   transitionSpeed: 'default',
   backgroundTransition: prefersReducedMotion ? 'none' : 'fade',
-  pdfSeparateFragments: false,
   width: 1280,
   height: 800,
   margin: 0.06,
@@ -67,15 +68,42 @@ function differentiateTransitions() {
 
 differentiateTransitions();
 
+// === Auto-Steps: Einblendungen laufen von selbst ==========================
+// Elemente mit .step erscheinen gestaffelt, sobald ihre Folie aktiv wird.
+// Optionales data-step="1" schiebt ein Element ans Ende der Sequenz
+// (z. B. die Pointe nach den Datenzeilen). Bei prefers-reduced-motion und
+// im ?print-pdf-Modus bleibt alles sofort sichtbar.
+const STEP_BASE_DELAY = 0.4; // Sekunden nach Folienwechsel
+const STEP_STAGGER = 0.16;
+
+function playSteps(slide: Element | null | undefined) {
+  if (!slide || prefersReducedMotion || isPrint) return;
+  const steps = Array.from(slide.querySelectorAll<HTMLElement>('.step')).sort(
+    (a, b) => Number(a.dataset.step ?? 0) - Number(b.dataset.step ?? 0)
+  );
+  steps.forEach((el) => {
+    el.classList.remove('is-in');
+    el.style.animationDelay = '';
+  });
+  // Reflow erzwingen, damit die Animation beim Wiederbetreten neu startet.
+  void (slide as HTMLElement).offsetWidth;
+  steps.forEach((el, i) => {
+    el.style.animationDelay = `${STEP_BASE_DELAY + i * STEP_STAGGER}s`;
+    el.classList.add('is-in');
+  });
+}
+
 deck.initialize().then(() => {
   updateNavigation();
+  playSteps(document.querySelector('.reveal .slides section.present:not(:has(> section))') ??
+    document.querySelector('.reveal .slides section.present'));
 });
 
-deck.on('slidechanged', () => {
+deck.on('slidechanged', (event) => {
   updateNavigation();
+  const e = event as { currentSlide?: Element };
+  playSteps(e?.currentSlide);
 });
-deck.on('fragmentshown', () => updateNavigation());
-deck.on('fragmenthidden', () => updateNavigation());
 
 // Für Debugging/QA erreichbar machen.
 (window as unknown as { deck: typeof deck }).deck = deck;

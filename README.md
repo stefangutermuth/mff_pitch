@@ -31,7 +31,7 @@ Push auf `main` zu GitHub Pages (identisch zum wuw_pitch-Setup).
 
 | Funktion              | Bedienung                                                    |
 |-----------------------|--------------------------------------------------------------|
-| Vor / zurück (linear) | Pfeil → / ← · Leertaste — durch alle Folien, Unterfolien & Einblendungen |
+| Vor / zurück          | Pfeil → / ← · Leertaste — Folie für Folie; **Einblendungen laufen automatisch** gestaffelt ab |
 | Kapitel wechseln      | Pfeil ↑ / ↓ (Sprung zum vorherigen/nächsten Kapitel)         |
 | Übersicht (Grid)      | `ESC` oder `O`                                               |
 | **Speaker View**      | `S` (Notizen, Timer, nächste Folie)                          |
@@ -47,7 +47,8 @@ die URL (`#/3/1` = Kapitel 4, Folie 2).
 Im Browser `?print-pdf` an die URL anhängen (z. B.
 `http://localhost:5173/?print-pdf`), dann **Drucken → Als PDF speichern**,
 Format 1280×800 bzw. **A4 Querformat**, Ränder **Keine**,
-Hintergrundgrafiken aktiviert. Fragmente erscheinen im PDF vollständig.
+Hintergrundgrafiken aktiviert. Alle Einblendungen erscheinen im PDF
+vollständig (Auto-Steps sind dort deaktiviert).
 
 ## ⚠️ Vor dem Versand
 
@@ -84,6 +85,12 @@ mff_pitch/
 
 Jedes Kapitel hat **Speaker Notes** (`<aside class="notes">`, Taste `S`) mit
 den Detailzahlen als Sprechtext.
+
+**Auto-Steps:** Elemente mit `class="step"` fliegen automatisch gestaffelt
+ein, sobald ihre Folie erscheint (Basis-Delay 0,4 s, Stagger 0,16 s — in
+`src/main.ts` justierbar). `data-step="1"` / `"2"` schiebt ein Element ans
+Ende der Sequenz (Pointe zuletzt). Bei `prefers-reduced-motion` und im
+`?print-pdf`-Modus ist alles sofort sichtbar.
 
 ## Design-Konzept „Laut / Leise"
 
