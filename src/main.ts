@@ -1,173 +1,220 @@
-// MFF-Pitch — Scroll-Verhalten.
-// Progressive Enhancement: Ohne JS (und bei prefers-reduced-motion)
-// ist die Seite komplett statisch lesbar; alle Anfangszustände
-// setzt ausschließlich GSAP, nie das CSS.
+// Reveal-Init für das Mr.Finanzfakten-Pitch-Deck.
+// Steuerung identisch zum wuw_pitch: Pfeile linear durch alle Folien &
+// Einblendungen, Hoch/Runter = Kapitelsprung, Kapitel-Rail unten,
+// Position-Card oben links, ?-Hilfe, Speaker-View (S), ?print-pdf.
 
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Lenis from 'lenis';
+import Reveal from 'reveal.js';
+import Notes from 'reveal.js/plugin/notes/notes.esm.js';
+
+import 'reveal.js/dist/reveal.css';
+// Helles Basis-Theme als Grundlage, danach unser Custom-Theme.
+import 'reveal.js/dist/theme/white.css';
 
 import './theme.css';
 
-gsap.registerPlugin(ScrollTrigger);
+const prefersReducedMotion =
+  window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// ?static schaltet jede Bewegung ab — für PDF-Export und Screenshots.
-const staticMode = new URLSearchParams(location.search).has('static');
-const reducedMotion =
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches || staticMode;
-
-/* ---------- Smooth Scroll (Lenis) ---------- */
-let lenis: Lenis | null = null;
-
-if (!reducedMotion) {
-  lenis = new Lenis({ autoRaf: false, lerp: 0.12 });
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add((time) => lenis!.raf(time * 1000));
-  gsap.ticker.lagSmoothing(0);
+// Springt zum nächsten (dir=1) bzw. vorherigen (dir=-1) Top-Level-Kapitel.
+// Wird an die Hoch/Runter-Tasten gebunden — Kapitelwechsel statt Unterfolien.
+function jumpChapter(dir: number) {
+  const total = document.querySelectorAll('.reveal .slides > section').length;
+  const { h } = deck.getIndices() as { h: number };
+  const target = Math.min(Math.max(h + dir, 0), total - 1);
+  if (target !== h) deck.slide(target, 0);
 }
 
-/* ---------- Anker-Navigation (Deep-Links bleiben erhalten) ---------- */
-document.querySelectorAll<HTMLAnchorElement>('a[data-scroll]').forEach((a) => {
-  a.addEventListener('click', (e) => {
-    const hash = a.getAttribute('href');
-    if (!hash || !hash.startsWith('#')) return;
-    const target = document.querySelector<HTMLElement>(hash);
-    if (!target) return;
-    e.preventDefault();
-    history.pushState(null, '', hash);
-    if (lenis) {
-      lenis.scrollTo(target, { offset: 0 });
-    } else {
-      target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
-    }
-  });
+const deck = new Reveal({
+  hash: true,
+  slideNumber: false, // ersetzt durch Chapter-Rail unten
+  progress: false,    // ersetzt durch Chapter-Rail
+  controls: true,
+  controlsTutorial: false,
+  controlsLayout: 'edges',
+  controlsBackArrows: 'visible',
+  center: false,
+  // Linear: Rechts/Links blättern durch ALLE Folien & Unterfolien (inkl. Fragmente)
+  navigationMode: 'linear',
+  transition: prefersReducedMotion ? 'none' : 'slide',
+  transitionSpeed: 'default',
+  backgroundTransition: prefersReducedMotion ? 'none' : 'fade',
+  pdfSeparateFragments: false,
+  width: 1280,
+  height: 800,
+  margin: 0.06,
+  minScale: 0.2,
+  maxScale: 2.0,
+  // Hoch/Runter = Kapitelwechsel (Sprung), nicht Unterfolien.
+  // Bild-auf/-ab bleiben bewusst lineares Vor/Zurück (für Presenter-Clicker).
+  keyboard: {
+    38: () => jumpChapter(-1), // ↑ vorheriges Kapitel
+    40: () => jumpChapter(1)   // ↓ nächstes Kapitel
+  },
+  plugins: [Notes]
 });
 
-/* ---------- Dot-Navigation: aktiven Abschnitt markieren ---------- */
-const navLinks = new Map<string, HTMLAnchorElement>();
-document
-  .querySelectorAll<HTMLAnchorElement>('.dotnav a[href^="#"]')
-  .forEach((a) => navLinks.set(a.getAttribute('href')!.slice(1), a));
+// Transition differenzieren: horizontal = slide, vertikale Unterfolien = fade.
+// Reveal liest data-transition pro <section>. Wir setzen vor dem Init.
+function differentiateTransitions() {
+  document
+    .querySelectorAll<HTMLElement>('.reveal .slides > section > section')
+    .forEach((sec) => {
+      if (!sec.hasAttribute('data-transition')) {
+        sec.setAttribute('data-transition', 'fade');
+      }
+    });
+}
 
-document.querySelectorAll<HTMLElement>('main section[id]').forEach((sec) => {
-  ScrollTrigger.create({
-    trigger: sec,
-    start: 'top 55%',
-    end: 'bottom 55%',
-    onToggle: (self) => {
-      if (!self.isActive) return;
-      navLinks.forEach((a, id) =>
-        a.classList.toggle('is-active', id === sec.id)
-      );
-    },
-  });
+differentiateTransitions();
+
+deck.initialize().then(() => {
+  updateNavigation();
 });
 
-/* Ab hier nur Bewegung — bei reduced motion ist Schluss. */
-if (!reducedMotion) {
-  /* ---------- Hero-Entrance ---------- */
-  gsap.from('.hero__copy > *', {
-    y: 26,
-    autoAlpha: 0,
-    duration: 0.9,
-    ease: 'power3.out',
-    stagger: 0.09,
-    delay: 0.1,
+deck.on('slidechanged', () => {
+  updateNavigation();
+});
+deck.on('fragmentshown', () => updateNavigation());
+deck.on('fragmenthidden', () => updateNavigation());
+
+// Für Debugging/QA erreichbar machen.
+(window as unknown as { deck: typeof deck }).deck = deck;
+
+// === Chapter-Rail + Position-Card =========================================
+const topLevelSections = Array.from(
+  document.querySelectorAll<HTMLElement>('.reveal .slides > section')
+);
+const chapterTitles = topLevelSections.map(
+  (s) => s.getAttribute('data-title') ?? ''
+);
+
+const railEl = document.getElementById('chapter-rail');
+const pcNum = document.getElementById('pc-num');
+const pcTitle = document.getElementById('pc-title');
+const pcSub = document.getElementById('pc-sub');
+const pcV = document.getElementById('pc-v');
+const pcVTotal = document.getElementById('pc-v-total');
+const pcSubDots = document.getElementById('pc-sub-dots');
+
+// Chapter-Rail einmalig bauen — klickbare Segmente,
+// jedes mit Slot für Sub-Ticks (Unter-Folien-Anzeige).
+function buildChapterRail() {
+  if (!railEl) return;
+  railEl.innerHTML = '';
+  topLevelSections.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'chapter-node';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', `Kapitel ${i + 1} — ${chapterTitles[i] || ''}`);
+    btn.title = `${String(i + 1).padStart(2, '0')} · ${chapterTitles[i] || ''}`;
+    btn.innerHTML =
+      `<span class="bar"><span class="sub-ticks"></span></span>` +
+      `<span class="num">${String(i + 1).padStart(2, '0')}</span>`;
+    btn.addEventListener('click', () => deck.slide(i, 0));
+    railEl!.appendChild(btn);
   });
-  gsap.from('.ig-tile', {
-    y: 46,
-    autoAlpha: 0,
-    duration: 1.1,
-    ease: 'power3.out',
-    delay: 0.35,
-  });
-  gsap.from('.serp-slab', {
-    y: 22,
-    autoAlpha: 0,
-    duration: 0.9,
-    ease: 'power3.out',
-    delay: 0.75,
-  });
+}
 
-  /* ---------- Sanfte Reveals ---------- */
-  gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
-    gsap.from(el, {
-      y: 24,
-      autoAlpha: 0,
-      duration: 0.85,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 87%', once: true },
-    });
-  });
+function updateNavigation() {
+  const { h, v } = deck.getIndices() as { h: number; v: number };
 
-  /* ---------- Signature: Ein Artikel fächert 25 Rankings auf ---------- */
-  const proof = document.getElementById('proof');
-  const article = document.getElementById('proof-article');
-  const fans = gsap.utils.toArray<HTMLElement>('[data-fan]');
+  // Chapter-Rail: Knoten-States + Sub-Ticks (immer sichtbar bei Kapiteln mit Unterfolien)
+  if (railEl) {
+    Array.from(railEl.children).forEach((node, i) => {
+      node.classList.toggle('current', i === h);
+      node.classList.toggle('past', i < h);
 
-  const center = (el: HTMLElement) => {
-    const r = el.getBoundingClientRect();
-    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
-  };
+      const subEl = node.querySelector('.sub-ticks') as HTMLElement | null;
+      if (!subEl) return;
 
-  if (proof && article && fans.length) {
-    const mm = gsap.matchMedia();
+      const subCount = topLevelSections[i].querySelectorAll(':scope > section').length;
+      node.classList.toggle('has-subs', subCount > 1);
 
-    // Desktop: Sektion pinnen, Chips fliegen aus dem Artikel heraus.
-    mm.add('(min-width: 768px)', () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: proof,
-          start: 'top top+=72',
-          end: '+=1500',
-          scrub: 0.6,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      });
+      // Sub-Ticks für JEDES Kapitel mit Unterfolien aufbauen (einmal)
+      if (subCount > 1 && subEl.childElementCount !== subCount) {
+        subEl.innerHTML = '';
+        for (let k = 0; k < subCount; k++) {
+          const t = document.createElement('span');
+          t.className = 'tick';
+          subEl.appendChild(t);
+        }
+      }
 
-      tl.from(article, {
-        y: 70,
-        autoAlpha: 0,
-        scale: 0.94,
-        duration: 0.7,
-        ease: 'power2.out',
-      });
-
-      tl.from(
-        fans,
-        {
-          x: (_i: number, el: HTMLElement) => center(article).x - center(el).x,
-          y: (_i: number, el: HTMLElement) => center(article).y - center(el).y,
-          scale: 0.5,
-          autoAlpha: 0,
-          duration: 1,
-          ease: 'power2.out',
-          stagger: { each: 0.12 },
-        },
-        '+=0.15'
-      );
-    });
-
-    // Mobil: keine Pin-Choreografie, nur ruhige Reveals.
-    mm.add('(max-width: 767px)', () => {
-      gsap.from(article, {
-        y: 26,
-        autoAlpha: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: article, start: 'top 87%', once: true },
-      });
-      fans.forEach((el) => {
-        gsap.from(el, {
-          y: 18,
-          autoAlpha: 0,
-          duration: 0.6,
-          ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 92%', once: true },
-        });
+      // Active/passed-States nur im aktuellen Kapitel; bei den anderen alle neutral
+      Array.from(subEl.children).forEach((t, k) => {
+        if (i === h) {
+          t.classList.toggle('active', k === (v ?? 0));
+          t.classList.toggle('passed', k < (v ?? 0));
+        } else if (i < h) {
+          // Komplett vergangene Kapitel: alle Ticks als "passed"
+          t.classList.add('passed');
+          t.classList.remove('active');
+        } else {
+          // Kommende Kapitel: alle Ticks neutral
+          t.classList.remove('passed');
+          t.classList.remove('active');
+        }
       });
     });
   }
+
+  // Position-Card: Nummer + Titel
+  if (pcNum) pcNum.textContent = String(h + 1).padStart(2, '0');
+  if (pcTitle) pcTitle.textContent = chapterTitles[h] || '';
+
+  // Unterfolien-Info
+  const chapter = topLevelSections[h];
+  if (!chapter || !pcSub || !pcV || !pcVTotal || !pcSubDots) return;
+  const verticals = chapter.querySelectorAll(':scope > section');
+  const vTotal = verticals.length;
+
+  if (vTotal > 1) {
+    pcSub.hidden = false;
+    pcV.textContent = String((v ?? 0) + 1);
+    pcVTotal.textContent = String(vTotal);
+
+    if (pcSubDots.childElementCount !== vTotal) {
+      pcSubDots.innerHTML = '';
+      for (let i = 0; i < vTotal; i++) {
+        const d = document.createElement('span');
+        d.className = 'pc-dot';
+        pcSubDots.appendChild(d);
+      }
+    }
+    Array.from(pcSubDots.children).forEach((dot, i) => {
+      dot.classList.toggle('active', i === (v ?? 0));
+      dot.classList.toggle('passed', i < (v ?? 0));
+    });
+  } else {
+    pcSub.hidden = true;
+    pcSubDots.innerHTML = '';
+  }
 }
+
+buildChapterRail();
+
+// === Keyboard-Help-Overlay ================================================
+const helpEl = document.getElementById('kbd-help');
+
+function toggleHelp(force?: boolean) {
+  if (!helpEl) return;
+  const next = force ?? !helpEl.classList.contains('open');
+  helpEl.classList.toggle('open', next);
+  helpEl.setAttribute('aria-hidden', next ? 'false' : 'true');
+}
+
+window.addEventListener('keydown', (e) => {
+  // ? oder Shift+/
+  if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+    e.preventDefault();
+    toggleHelp();
+  } else if (e.key === 'Escape' && helpEl?.classList.contains('open')) {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleHelp(false);
+  }
+});
+
+helpEl?.addEventListener('click', (e) => {
+  if (e.target === helpEl) toggleHelp(false);
+});
