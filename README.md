@@ -105,9 +105,10 @@ Orange `#f8a000` · Papier `#f5f8fb` · Tinte `#16334f` · Linie `#d9e2ec`
 
 ## Hinweise
 
-- Alle Zahlen: Ubersuggest (Stand August 2026) und Studie
-  „Die besten Versicherungs-Instagrammer Deutschlands"
-  (versicherungenmitkopf.de, Juni 2026). Nichts erfunden, keine Garantien.
+- Alle Zahlen: Ubersuggest (Stand August 2026), Instagram direkt (Follower)
+  und das Follower-Ranking „Die besten Versicherungs-Instagrammer
+  Deutschlands" (versicherungenmitkopf.de, Juni 2026 — reine, nachzählbare
+  Follower-Zahlen). Nichts erfunden, keine Garantien.
 - `prefers-reduced-motion` wird respektiert (keine Transitions/Fragment-Animationen).
 - Seite steht auf `noindex` — privater Pitch.
 - Alle 12 Folien sind auf 1280×800 ohne Überlauf geprüft.
