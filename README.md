@@ -73,7 +73,7 @@ mff_pitch/
 
 ## Inhalt — Kapitel (7 Kapitel / 12 Folien)
 
-1. **Titel** — Deckblatt (Soft Relaunch + SEO-Betreuung) · Der Widerspruch: 134.000 folgen dir, 63 finden dich (2 Folien)
+1. **Titel** — Deckblatt (Soft Relaunch + SEO-Betreuung) · Der Widerspruch: 139.000 folgen dir, 63 finden dich (2 Folien)
 2. **Ausgangslage & Konzept** — vier Zahlen · zwei Bausteine, ohne Werbebudget (2 Folien)
 3. **Soft Relaunch** — Umbau statt Neubau auf Pillar-Cluster-Struktur · Conversion zum Beratungstermin (2 Folien)
 4. **SEO-Betreuung** — „Diese Suchen holen wir uns": echte Keywords je Säule + was wir bauen · Reporting & AI-Sichtbarkeit (2 Folien)

@@ -274,6 +274,28 @@ html, body {
 .title-meta strong { color: #e9f1f9; font-weight: 600; }
 
 .title-visual { position: relative; justify-self: center; padding-bottom: 34px; }
+
+/* Echtes Instagram-Profil im Handy-Rahmen (Folie 1.2) */
+.ig-shot {
+  width: 254px;
+  height: 500px;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 24px 50px rgba(2, 18, 34, 0.5);
+  background: #000;
+}
+.reveal .ig-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: none;
+  margin: -10% 0 0 0; /* iOS-Statusleiste des Screenshots ausblenden */
+  border: none;
+  box-shadow: none;
+  background: none;
+}
 .ig-tile {
   width: 254px;
   aspect-ratio: 9 / 15;
