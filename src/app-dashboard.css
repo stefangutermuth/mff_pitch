@@ -1,0 +1,169 @@
+/* ============================================================
+   Zusatz-Styles für den Pitch „App + Dashboard“.
+   Baut auf theme.css auf (gleiche Tokens, gleiche Komponenten).
+   ============================================================ */
+
+/* ---------- Drei Karten nebeneinander ---------- */
+.cards3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+  margin-top: 0.5rem;
+}
+.cards3 .concept-card p { font-size: 0.88rem; }
+
+/* ---------- Handy-Reihe mit echten Bildschirmfotos ---------- */
+.phones {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.phone {
+  margin: 0;
+  width: 190px;
+  border-radius: 28px;
+  border: 6px solid #0b1b2c;
+  background: #0b1b2c;
+  box-shadow: 0 16px 34px rgba(6, 53, 96, 0.22);
+  overflow: hidden;
+}
+.phone img { display: block; width: 100%; height: auto; }
+.phone--mid { transform: translateY(-14px); }
+
+/* ---------- Vergleichstabelle (Marktpreise) ---------- */
+.cmp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+  align-items: start;
+}
+.cmp-h {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--navy);
+  margin: 0 0 0.45rem;
+}
+.cmp-sub { font-size: 0.74rem; color: var(--muted); margin: 0 0 0.5rem; max-width: none; }
+.kw-table .cmp-val {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+}
+.kw-table .cmp-key { font-weight: 600; font-size: 0.9rem; }
+.kw-table .cmp-key small { display: block; font-weight: 400; font-size: 0.7rem; color: var(--muted); }
+
+/* ---------- Rechte-Matrix ---------- */
+.matrix {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  font-size: 0.9rem;
+}
+.reveal .matrix th,
+.reveal .matrix td {
+  padding: 0.62rem 1rem;
+  text-align: center;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+.reveal .matrix thead th {
+  border-top: 0;
+  background: var(--paper);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.reveal .matrix th:first-child,
+.reveal .matrix td:first-child { text-align: left; font-weight: 600; }
+.matrix .yes { color: var(--ok); font-weight: 700; }
+.matrix .no { color: #a3b1c0; }
+.matrix .part { color: var(--orange-deep); font-weight: 600; font-size: 0.82rem; }
+
+/* ---------- Entwurf des Dashboards ---------- */
+.dash {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.dash__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.55rem 1rem;
+  background: var(--navy);
+  color: #eaf2fa;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.dash__bar b { color: var(--orange); font-family: var(--font-display); letter-spacing: 0.02em; }
+.dash__bar span:last-child { margin-left: auto; color: var(--muted-dark); font-weight: 400; }
+.dash__body { padding: 0.9rem 1rem 1rem; display: grid; gap: 0.8rem; }
+.dash__kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; }
+.dash__kpi {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+}
+.dash__kpi b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--navy);
+  line-height: 1.15;
+}
+.dash__kpi span { font-size: 0.62rem; color: var(--muted); }
+.dash__kpi i { font-style: normal; font-size: 0.62rem; color: var(--ok); font-weight: 600; margin-left: 0.3em; }
+.dash__cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; }
+.dash__col { background: var(--paper); border-radius: 10px; padding: 0.5rem; min-height: 150px; }
+.dash__col .dash__colhead {
+  margin: 0 0 0.4rem;
+  max-width: none;
+  font-weight: 600;
+  font-size: 0.6rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+}
+.dash__card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.4rem 0.5rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  box-shadow: 0 1px 2px rgba(6, 53, 96, 0.05);
+}
+.dash__card b { display: block; color: var(--navy); font-size: 0.74rem; }
+.dash__card em { font-style: normal; color: var(--muted); font-size: 0.62rem; }
+.dash__tag {
+  display: inline-block;
+  margin-top: 0.2rem;
+  font-size: 0.56rem;
+  font-weight: 600;
+  padding: 0.1em 0.5em;
+  border-radius: 999px;
+  background: rgba(248, 160, 0, 0.16);
+  color: var(--orange-deep);
+}
+.dash__tag--blue { background: rgba(6, 53, 96, 0.1); color: var(--navy); }
+.dash-note { font-size: 0.72rem; color: var(--muted); margin-top: 0.5rem; max-width: none; }
+
+/* ---------- Kleine Zusätze ---------- */
+.reveal .list-tight { margin: 0.4rem 0 0; }
+.cost-note { font-size: 0.8rem; color: var(--muted); max-width: 70ch; margin-top: 0.7rem; }
