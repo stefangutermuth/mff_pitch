@@ -1,4 +1,4 @@
 // Einstieg des zweiten Pitches (App + Dashboard).
-// Gleiche Steuerung und gleiches Theme wie der SEO-Pitch, dazu die Zusatz-Styles.
-import './app-dashboard.css';
+// Erst Steuerung und Theme des SEO-Pitches, danach die Zusatz-Styles, damit sie das Theme überschreiben.
 import './main';
+import './app-dashboard.css';

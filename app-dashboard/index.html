@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Deine App. Deine Zentrale. — Vorschlag für Mr.Finanzfakten</title>
-  <meta name="description" content="Finanz-App und Dashboard als Trello-Ersatz für Mr.Finanzfakten — ein Vorschlag von GUMU Werbeagentur, Flöha." />
+  <meta name="description" content="Finanz-App, Dashboard als Trello-Ersatz und Posteingang für Mr.Finanzfakten — ein Vorschlag von GUMU Werbeagentur, Flöha." />
   <meta name="robots" content="noindex, nofollow" />
   <meta property="og:title" content="Deine App. Deine Zentrale." />
   <meta property="og:description" content="Finanz-App und Dashboard als Trello-Ersatz für Mr.Finanzfakten — ein Vorschlag von GUMU Werbeagentur." />
@@ -31,8 +31,8 @@
           <span class="eyebrow eyebrow--on-dark">Ein Vorschlag für Tim Hunger</span>
           <h1 class="cover__h1">Deine App <span class="cover__amp">+</span> deine Zentrale.</h1>
           <p class="subline">
-            Eine Finanz-App für deine Community und ein Dashboard, das Trello ablöst:
-            Anfragen, Team, Rechte und alle Zahlen an einem Ort.
+            Eine Finanz-App für deine Community, ein Dashboard, das Trello ablöst, und ein
+            gemeinsamer Posteingang für alle Nachrichten. Alles auf einem eigenen Server.
           </p>
           <div class="title-meta">
             <span><strong>Für:</strong> Tim Hunger · Mr.Finanzfakten, Chemnitz</span>
@@ -163,7 +163,7 @@
       <!-- ============================================================
            KAPITEL 4 — BAUSTEIN B · DAS DASHBOARD (3 Folien)
            ============================================================ -->
-      <section data-title="Das Dashboard">
+      <section data-title="Dashboard &amp; Chat">
         <section data-background-color="#f5f8fb">
           <span class="eyebrow">Kapitel 4 · Baustein B · Das Dashboard</span>
           <h2>Eine Zentrale für Anfragen, Team und Zahlen.</h2>
@@ -221,6 +221,7 @@
               <tr><td>Alle Anfragen sehen</td><td class="yes">✓</td><td class="part">nur eigene</td><td class="yes">✓</td></tr>
               <tr><td>Anfragen bearbeiten und Notizen schreiben</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td></tr>
               <tr><td>Anfragen einem Berater zuweisen</td><td class="yes">✓</td><td class="no">–</td><td class="yes">✓</td></tr>
+              <tr><td>Gespräche im Posteingang sehen</td><td class="yes">✓</td><td class="part">nur zugewiesene</td><td class="yes">✓</td></tr>
               <tr><td>Zahlen der Website und Auswertungen sehen</td><td class="yes">✓</td><td class="part">eigene Quote</td><td class="no">–</td></tr>
               <tr><td>Team einladen, Rollen ändern, Zugänge sperren</td><td class="yes">✓</td><td class="no">–</td><td class="no">–</td></tr>
               <tr><td>Daten exportieren</td><td class="yes">✓</td><td class="no">–</td><td class="no">–</td></tr>
@@ -235,6 +236,47 @@
             Tafel. Ein Berater sieht nur seine Anfragen, das Backoffice darf alles bearbeiten,
             aber keine Zahlen sehen, der Inhaber sieht alles. Tim entscheidet, ob es diese drei
             Rollen braucht.
+          </aside>
+        </section>
+        <section data-background-color="#f5f8fb">
+          <span class="eyebrow">Kapitel 4 · Baustein C · Posteingang</span>
+          <h2>Ein Posteingang für alle Nachrichten.</h2>
+          <div class="two-col two-col--deck">
+            <div>
+              <p>
+                Website-Chat, E-Mail und Instagram-Nachrichten laufen in einem Postfach zusammen, wie bei
+                Intercom. Dafür setzen wir <strong>Chatwoot</strong> ein, ein freies Open-Source-Programm,
+                das auf deinem eigenen Server läuft.
+              </p>
+              <ul class="check-list check-list--tight">
+                <li class="step">Live-Chat auf mrfinanzfakten.de im Markendesign</li>
+                <li class="step">E-Mail-Postfächer wie kontakt@ als Gespräche</li>
+                <li class="step">Instagram- und Facebook-Nachrichten, soweit Konto und Meta-Freigabe es erlauben</li>
+                <li class="step">Gespräche einem Berater zuweisen, interne Notizen, Antwortvorlagen</li>
+                <li class="step">Jedes Gespräch lässt sich mit einer Anfrage im Dashboard verknüpfen</li>
+              </ul>
+            </div>
+            <div>
+              <div class="note-box step" data-step="1">
+                <strong>Zum Vergleich:</strong> Intercom kostet ab etwa 29&nbsp;$ je Nutzer und Monat
+                (Essential, Jahreszahlung), bei 7 Nutzern rund 200 bis 270&nbsp;$ im Monat. Chatwoot in der
+                freien Version hat keine Lizenzgebühr pro Nutzer.
+              </div>
+              <div class="note-box step" data-step="1">
+                <strong>Gut zu wissen:</strong> Das Hauptprogramm steht unter MIT-Lizenz. Einzelne
+                Zusatzfunktionen wie SLA-Verwaltung gibt es nur in der kostenpflichtigen Enterprise-Variante,
+                die wir nicht brauchen. Instagram und WhatsApp laufen über Meta und hängen an deren
+                Freigaben. WhatsApp-Nachrichten kosten bei Meta extra und kommen nur auf Wunsch dazu.
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            Gemeint ist Chatwoot, die bekannteste freie Alternative zu Intercom (Hauptcode MIT-Lizenz,
+            Ordner enterprise/ proprietär). Falls Stefan ein anderes Repository meint, diese Folie
+            anpassen. Die Kanäle laut Chatwoot-Dokumentation: Website-Chat, E-Mail (IMAP/SMTP), Instagram
+            und Facebook über Meta-Login, WhatsApp über die Cloud-API von Meta. Beim Self-Hosting
+            braucht Instagram und Facebook eine eigene Meta-App: Das prüfen wir vor dem Bau. Die
+            Hardware-Anforderung von Chatwoot (mindestens 4 GB RAM) steht auf der Server-Folie.
           </aside>
         </section>
         <section data-background-color="#f5f8fb">
@@ -307,13 +349,15 @@
                 <div class="kw-table__row"><span class="cmp-key">HubSpot Starter<small>je nach Abrechnung</small></span><span class="cmp-val">63–140 €</span></div>
                 <div class="kw-table__row"><span class="cmp-key">Pipedrive Lite<small>Jahres- bis Monatszahlung</small></span><span class="cmp-val">98–168 €</span></div>
                 <div class="kw-table__row"><span class="cmp-key">Pipedrive Growth<small>Jahres- bis Monatszahlung</small></span><span class="cmp-val">273–343 €</span></div>
+                <div class="kw-table__row"><span class="cmp-key">Intercom Essential<small>Chat, ohne KI-Agent</small></span><span class="cmp-val">203–273 $</span></div>
+                <div class="kw-table__row"><span class="cmp-key">Chatwoot Cloud<small>Tarif Startups bis Business</small></span><span class="cmp-val">133–273 $</span></div>
               </div>
             </div>
           </div>
           <p class="micro muted mt-s step" data-step="1">
-            Quellen: Preisangaben von Agenturen und Preisseiten Dritter, Stand 11. November 2026
-            (u. a. innowise.com, vp0.com, 8ration.com, freelancermap.de, trello.com und pipedrive.com
-            über Vergleichsseiten). Annahme: 7 Nutzer. Preise ändern sich, vor Vertragsabschluss
+            Quellen: Preisangaben von Agenturen und Preisseiten Dritter, Stand 11. bis 17. November 2026
+            (u. a. innowise.com, vp0.com, 8ration.com, freelancermap.de, intercom.com, chatwoot.com,
+            trello.com und pipedrive.com, teils über Vergleichsseiten). Annahme: 7 Nutzer. Preise ändern sich, vor Vertragsabschluss
             prüfen wir sie bei den Anbietern.
           </p>
           <aside class="notes">
@@ -327,28 +371,26 @@
         </section>
         <section data-background-color="#f5f8fb">
           <span class="eyebrow">Kapitel 5 · Investition</span>
-          <h2>Zwei Bausteine, klare Preise.</h2>
-          <div class="price-grid">
+          <h2>Drei Bausteine, klare Preise.</h2>
+          <div class="price-grid price-grid--3">
             <div class="price-card step">
               <div class="price-card__head">
                 <span class="price-card__icon">A</span>
                 <h3>Die App</h3>
-                <span class="pill">einmalig + Betrieb</span>
               </div>
               <p class="price-card__price">3.900&nbsp;€ <em>einmalig</em></p>
               <ul class="price-card__list">
                 <li>Budgetplaner, Schuldentracker, Währungsrechner, Ratgeber, Beratungs-Tab</li>
                 <li>iOS-Version (fertig) und Android-Version</li>
-                <li>Einrichtung und Start in App Store und Google Play</li>
+                <li>Start in App Store und Google Play</li>
                 <li>Gestaltung in deiner Marke, 3 Monate Anpassungen nach dem Start</li>
               </ul>
-              <p class="price-card__note">Danach 49&nbsp;€ / Monat: Pflege, Updates für neue Handy-Versionen, Support, Gebühren der Stores</p>
+              <p class="price-card__note">Danach 49&nbsp;€ / Monat: Pflege, Updates, Support, Gebühren der Stores</p>
             </div>
             <div class="price-card step">
               <div class="price-card__head">
                 <span class="price-card__icon">B</span>
                 <h3>Das Dashboard</h3>
-                <span class="pill">einmalig + Betrieb</span>
               </div>
               <p class="price-card__price">ab 3.900&nbsp;€ <em>einmalig</em></p>
               <ul class="price-card__list">
@@ -356,63 +398,138 @@
                 <li><strong>Komplett, 5.900&nbsp;€:</strong> zusätzlich alle Zahlen (Website, Google, Anfragen, Formular-Test) und Wochenbericht</li>
                 <li>Beliebig viele Nutzer, kein Preis pro Zugang</li>
               </ul>
-              <p class="price-card__note">Danach 99&nbsp;€ / Monat: Hosting in Deutschland, Sicherung, Updates, Support</p>
+              <p class="price-card__note">Danach 99&nbsp;€ / Monat: Sicherung, Updates, Überwachung, Support</p>
+            </div>
+            <div class="price-card step">
+              <div class="price-card__head">
+                <span class="price-card__icon">C</span>
+                <h3>Der Posteingang</h3>
+              </div>
+              <p class="price-card__price">1.900&nbsp;€ <em>einmalig</em></p>
+              <ul class="price-card__list">
+                <li>Chatwoot auf deinem Server eingerichtet</li>
+                <li>Live-Chat auf der Website im Markendesign</li>
+                <li>E-Mail-Postfach und Instagram angebunden</li>
+                <li>Rollen, Zuweisung, Antwortvorlagen, Einweisung für dein Team</li>
+              </ul>
+              <p class="price-card__note">Danach 29&nbsp;€ / Monat: Updates, Sicherung, Überwachung. WhatsApp auf Wunsch zusätzlich</p>
             </div>
           </div>
           <div class="note-box step" data-step="1">
-            <strong>Beides zusammen:</strong> 8.900&nbsp;€ statt 9.800&nbsp;€ einmalig (App + Dashboard Komplett)
-            und 129&nbsp;€ statt 148&nbsp;€ im Monat. Alle Beträge netto, zzgl. USt.
+            <strong>Alles zusammen</strong> (App, Dashboard Komplett, Posteingang, Server-Einrichtung):
+            10.900&nbsp;€ statt 12.190&nbsp;€ einmalig und 149&nbsp;€ statt 177&nbsp;€ im Monat, dazu der Server
+            von Hostinger (nächste Folie). Alle Beträge netto, zzgl. USt.
           </div>
           <aside class="notes">
             Die Preise sind bewusst weit unter dem Agentur-Niveau, weil die Grundlagen schon stehen:
             die Rechenlogik der App aus Tims Vorlagen, die iOS-Version, das Formular und die
-            Verbindung zu den Website-Zahlen. App 3.900 Euro einmalig plus 49 Euro Betrieb. Dashboard
-            in zwei Stufen: Start (Trello-Ersatz mit Rechten) 3.900 Euro, Komplett mit Zahlen
-            5.900 Euro, dazu 99 Euro Betrieb. Paket aus App und Dashboard Komplett: 8.900 Euro und
-            129 Euro im Monat. Förderfähigkeit nicht zugesagt: vorher prüfen, falls gewünscht.
+            Verbindung zu den Website-Zahlen. App 3.900 Euro plus 49 Euro Betrieb. Dashboard Start
+            3.900 Euro, Komplett 5.900 Euro, dazu 99 Euro Betrieb. Posteingang 1.900 Euro plus 29 Euro
+            Betrieb. Paket aus allem inklusive Server-Einrichtung (490 Euro): 10.900 statt 12.190 Euro
+            und 149 statt 177 Euro im Monat. Der Server selbst wird von Hostinger direkt abgerechnet.
+            Förderfähigkeit nicht zugesagt: vorher prüfen, falls gewünscht.
+          </aside>
+        </section>
+        <section data-background-color="#f5f8fb">
+          <span class="eyebrow">Kapitel 5 · Investition · Server</span>
+          <h2>Ein Server für das ganze System.</h2>
+          <div class="two-col two-col--deck">
+            <div>
+              <p>
+                Dashboard, Posteingang und Datenbank laufen zusammen auf einem eigenen Server bei
+                Hostinger, im Konto deiner Firma. Dein Vertrag, deine Daten.
+              </p>
+              <ul class="check-list check-list--tight">
+                <li class="step"><strong>Absichern:</strong> Firewall, automatische Sicherheits-Updates, verschlüsselte Verbindung</li>
+                <li class="step"><strong>Sichern:</strong> tägliche Datensicherung von uns, dazu die wöchentlichen Backups von Hostinger</li>
+                <li class="step"><strong>Überwachen:</strong> wir sehen einen Ausfall, bevor dein Team ihn merkt</li>
+                <li class="step"><strong>Umziehen:</strong> die bisherigen Anfragen aus Trello werden übernommen</li>
+              </ul>
+            </div>
+            <dl class="calc step" data-step="1">
+              <div class="calc__row">
+                <dt>Hostinger KVM 2, Monat 1 bis 24</dt>
+                <dd>7,79&nbsp;€ / Monat</dd>
+              </div>
+              <div class="calc__row">
+                <dt>ab Monat 25 (Verlängerung)</dt>
+                <dd>14,99&nbsp;€ / Monat</dd>
+              </div>
+              <div class="calc__row">
+                <dt>Server-Einrichtung durch uns, einmalig</dt>
+                <dd>490&nbsp;€</dd>
+              </div>
+              <div class="calc__row calc__row--sum">
+                <dt>Server im ersten Jahr, inklusive Einrichtung</dt>
+                <dd>583&nbsp;€</dd>
+              </div>
+            </dl>
+          </div>
+          <p class="micro muted mt-s step" data-step="1">
+            KVM 2: 2 Kerne, 8 GB Arbeitsspeicher, 100 GB Speicher. Hostinger-Preise laut hostinger.com,
+            Stand 17. November 2026, Aktionspreis bei Vorauszahlung für 24 Monate (186,96&nbsp;€). Ob die
+            Preise netto oder brutto gelten und ob der Standort Frankfurt wählbar ist, prüfen wir vor der
+            Bestellung. Chatwoot verlangt mindestens 4 GB Arbeitsspeicher. Wächst das System, ist der nächste
+            Tarif KVM 4 (4 Kerne, 16 GB) für 10,99&nbsp;€ im Aktionspreis, danach 27,99&nbsp;€ im Monat.
+            Den Server-Preis zahlst du direkt an Hostinger, unser Betrieb ist davon getrennt.
+          </p>
+          <aside class="notes">
+            Hostinger KVM 2 laut Preisseite: 7,79 Euro im Monat bei 24 Monaten Vorauszahlung, Verlängerung
+            14,99 Euro. Das Konto gehört Tim bzw. der GmbH, wir richten es ein. Wichtig für den Datenschutz:
+            mit Hostinger einen Auftragsverarbeitungsvertrag abschließen und den Standort Deutschland
+            wählen, sofern angeboten. Chatwoot-Doku: mindestens 4 GB RAM, empfohlen 4+ Kerne und 8 GB
+            bei höherem Aufkommen. Für Tims Anfragenmenge reicht KVM 2 erst einmal, KVM 4 ist die Reserve.
+            Wöchentliche Backups sind bei Hostinger inklusive, wir ergänzen eine tägliche Sicherung.
           </aside>
         </section>
         <section data-background-color="#f5f8fb">
           <span class="eyebrow">Kapitel 5 · Investition · Drei Jahre</span>
-          <h2>Dashboard gegen gemietete Software.</h2>
-          <dl class="calc">
-            <div class="calc__row step">
-              <dt>Dashboard Komplett, einmalig</dt>
-              <dd>5.900&nbsp;€</dd>
+          <h2>Drei Jahre im Vergleich.</h2>
+          <div class="calc-duo">
+            <div class="step">
+              <p class="cmp-h">Dashboard Komplett</p>
+              <dl class="calc">
+                <div class="calc__row"><dt>Einmalig</dt><dd>5.900&nbsp;€</dd></div>
+                <div class="calc__row"><dt>Betrieb, 36 × 99&nbsp;€</dt><dd>3.564&nbsp;€</dd></div>
+                <div class="calc__row"><dt>Server samt Einrichtung</dt><dd>857&nbsp;€</dd></div>
+                <div class="calc__row calc__row--sum"><dt>Nach drei Jahren</dt><dd>10.321&nbsp;€</dd></div>
+                <div class="calc__row"><dt>Pipedrive Growth, 36 × 273&nbsp;€</dt><dd>9.828&nbsp;€</dd></div>
+              </dl>
             </div>
-            <div class="calc__row step">
-              <dt>Betrieb, 36 Monate × 99&nbsp;€</dt>
-              <dd>3.564&nbsp;€</dd>
+            <div class="step">
+              <p class="cmp-h">Posteingang</p>
+              <dl class="calc">
+                <div class="calc__row"><dt>Einmalig</dt><dd>1.900&nbsp;€</dd></div>
+                <div class="calc__row"><dt>Betrieb, 36 × 29&nbsp;€</dt><dd>1.044&nbsp;€</dd></div>
+                <div class="calc__row"><dt>Server (läuft mit)</dt><dd>0&nbsp;€</dd></div>
+                <div class="calc__row calc__row--sum"><dt>Nach drei Jahren</dt><dd>2.944&nbsp;€</dd></div>
+                <div class="calc__row"><dt>Chatwoot Cloud, 36 × 133&nbsp;$</dt><dd>4.788&nbsp;$</dd></div>
+                <div class="calc__row"><dt>Intercom Essential, 36 × 203&nbsp;$</dt><dd>7.308&nbsp;$</dd></div>
+              </dl>
             </div>
-            <div class="calc__row calc__row--sum step">
-              <dt>Dashboard Komplett nach drei Jahren</dt>
-              <dd>9.464&nbsp;€</dd>
-            </div>
-            <div class="calc__row step">
-              <dt>Zum Vergleich: Pipedrive Growth, 7 Nutzer, 36 × 273&nbsp;€</dt>
-              <dd>9.828&nbsp;€</dd>
-            </div>
-          </dl>
+          </div>
           <p class="statement step" data-step="1">
-            Nach etwa drei Jahren gleichauf, danach günstiger. <em>Und es passt zu deinem Ablauf.</em>
+            Das Dashboard liegt etwa <em>500&nbsp;€ über</em> Pipedrive,<br />
+            der Posteingang <em>deutlich darunter</em>.
           </p>
           <p class="cost-note step" data-step="1">
-            Reicht dir eine Tafel mit Karten, bleibt Trello Standard mit etwa 35 bis 42&nbsp;$ im Monat
-            die günstigste Lösung. Dann fehlen aber Rechte pro Rolle, die Zahlen deiner Website
-            und die Anbindung an dein Formular.
+            Dafür passen beide zu deinem Ablauf: Rechte pro Rolle, die Zahlen deiner Website und die
+            Anbindung an dein Formular. Reicht dir eine Tafel mit Karten, bleibt Trello Standard mit etwa
+            35 bis 42&nbsp;$ im Monat die günstigste Lösung.
           </p>
           <p class="micro muted mt-s step" data-step="1">
-            Pipedrive Growth: Listenpreis 39 € je Nutzer und Monat bei Jahreszahlung (7 Nutzer = 273 €),
-            netto, Stand 11. November 2026. Ob sich einzelne Teile fördern lassen, prüfen wir auf
-            Wunsch vorab. Eine Zusage ist das nicht.
+            Gemietete Software: Listenpreise für 7 Nutzer bei Jahreszahlung, netto, Stand 11. bis 17. November
+            2026 (Pipedrive Growth 39&nbsp;€, Chatwoot Startups 19&nbsp;$, Intercom Essential 29&nbsp;$ je Nutzer und Monat).
+            Dollar und Euro sind nicht umgerechnet. Ob sich einzelne Teile fördern lassen, prüfen wir auf Wunsch
+            vorab. Eine Zusage ist das nicht.
           </p>
           <aside class="notes">
-            Ehrlicher Vergleich: 5.900 Euro plus 36 mal 99 Euro sind 9.464 Euro. Pipedrive Growth mit
-            7 Nutzern kostet bei Jahreszahlung 273 Euro im Monat, in drei Jahren 9.828 Euro. Gleichauf
-            nach rund 34 Monaten. Das ist kein Preisargument allein: Der Vorteil ist, dass die Zentrale
-            zu Tims Ablauf passt und Zahlen und Rechte enthält. Wer nur Karten braucht, bleibt bei
-            Trello Standard. Die Pipedrive-Preise sind Drittangaben und gehören vor einem Vertrag
-            geprüft.
+            Ehrlicher Vergleich über 36 Monate. Dashboard Komplett: 5.900 + 36 × 99 = 3.564 + Server
+            (490 Einrichtung + 24 × 7,79 + 12 × 14,99, gerundet 857) = 10.321 Euro, Pipedrive Growth mit
+            7 Nutzern 9.828 Euro. Beim Posteingang: 1.900 + 36 × 29 = 2.944 Euro, der Server wird
+            mitgenutzt. Chatwoot Cloud kostet 7 × 19 Dollar im Monat (Tarif Startups), Intercom Essential
+            7 × 29 Dollar. Währungen sind nicht umgerechnet. Der Vorteil liegt weniger im reinen Preis als
+            darin, dass Rechte, Zahlen und Formular zusammenpassen und keine Lizenzen pro Nutzer anfallen.
           </aside>
         </section>
       </section>
@@ -443,6 +560,10 @@
             <div class="timeline__row step">
               <span class="timeline__label">Dashboard · Zahlen</span>
               <div class="timeline__track"><span class="timeline__bar" style="--from: 3; --span: 1;">Kennzahlen</span></div>
+            </div>
+            <div class="timeline__row step">
+              <span class="timeline__label">Server · Posteingang</span>
+              <div class="timeline__track"><span class="timeline__bar" style="--from: 1; --span: 3;">Server · Chat · E-Mail · Instagram</span></div>
             </div>
             <div class="timeline__row step">
               <span class="timeline__label">Umstieg von Trello</span>
@@ -476,12 +597,15 @@
               </ul>
             </div>
             <div class="step">
-              <h3>Für das Dashboard</h3>
+              <h3>Für Dashboard, Posteingang und Server</h3>
               <ul class="check-list check-list--tight">
                 <li>Wer bekommt Zugang, mit welcher Rolle?</li>
                 <li>Welche Spalten braucht dein Ablauf von der Anfrage bis zum Abschluss?</li>
                 <li>Zugang zu Trello, damit wir die bisherigen Anfragen übernehmen können</li>
                 <li>Welche Zahlen willst du jede Woche sehen?</li>
+                <li>Welche Postfächer und Kanäle (E-Mail, Instagram, Facebook, später WhatsApp) sollen in den Posteingang?</li>
+                <li>Hostinger-Konto auf deine Firma, wir richten es ein</li>
+                <li>Auftragsverarbeitungsvertrag mit Hostinger abschließen</li>
               </ul>
             </div>
           </div>
@@ -527,7 +651,7 @@
         <p class="micro muted contact-fine step" data-step="1">
           Preise &amp; Zahlen dieser Präsentation sind Richtwerte als Vertragsgrundlage, das verbindliche
           Angebot folgt separat. Alle Beträge netto, zzgl. USt. Marktpreise: Angaben von Agenturen und
-          Preisseiten Dritter, Stand 11. November 2026.
+          Preisseiten Dritter, Stand 11. bis 17. November 2026.
         </p>
         <aside class="notes">
           Schlussfolie, ruhig. Tim antwortet auf die Nachricht oder schreibt an
